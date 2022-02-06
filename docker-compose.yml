@@ -1,0 +1,25 @@
+version: '3'
+ 
+services:
+    illixr:
+        image: illixr/illixr:latest
+        privileged: true
+        container_name: illixr-docker
+        environment:
+          - DISPLAY=${DISPLAY}
+          - QT_X11_NO_MITSHM=1 # for QT applications
+        build:
+            context: ./src
+            args:
+                USER: illixr
+                PASSWORD: illixr
+                PARALLEL_CORES: ${PARALLEL_CORES}
+        hostname: illixr-docker
+        user: ${UID_GID}
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                      - capabilities: [gpu]
