@@ -13,7 +13,7 @@ services:
             args:
                 USER: illixr
                 PASSWORD: illixr
-                PARALLEL_CORES: ${PARALLEL_CORES}
+                illixr_nproc: ${PARALLEL_CORES}
         hostname: illixr-docker
         user: ${UID_GID}
         volumes:

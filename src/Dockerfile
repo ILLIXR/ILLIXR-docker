@@ -88,7 +88,7 @@ RUN sudo apt-get update && \
 ARG CC=clang-10
 ARG CXX=clang++-10
 ARG prefix_dir=/usr/local
-ARG illixr_nproc=17
+ARG illixr_nproc
 ARG build_type=Release
 ARG src_dir_conda=${opt_dir}/miniconda3
 ARG env_config_path=runner/environment.yml
