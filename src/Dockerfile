@@ -109,7 +109,7 @@ RUN ${src_dir_conda}/bin/conda env create --force -f ${env_config_path} && \
 # Install Vulkan
 USER root
 RUN apt-get update && \
-    apt-get install vulkan-utils vulkan-tools \
+    apt-get install vulkan-utils vulkan-tools && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
 COPY nvidia_icd.json /etc/vulkan/icd.d/nvidia_icd.json
