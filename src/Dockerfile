@@ -66,8 +66,10 @@ WORKDIR ${opt_dir}
 COPY create_user.sh /usr/local/bin/create_user.sh
 RUN chmod +x /usr/local/bin/create_user.sh && \
     /usr/local/bin/create_user.sh && \
-    rm /usr/local/bin/create_user.sh && \
-    git clone --depth=1 https://github.com/ILLIXR/ILLIXR.git ${opt_dir} && \
+    rm /usr/local/bin/create_user.sh
+
+ADD https://api.github.com/repos/ILLIXR/ILLIXR/git/refs/heads/master version.json
+RUN git clone --depth=1 https://github.com/ILLIXR/ILLIXR.git ${opt_dir} && \
     chown ${USER} ${opt_dir} -R
 
 USER ${USER}
