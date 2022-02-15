@@ -15,7 +15,6 @@ services:
                 PASSWORD: illixr
                 illixr_nproc: ${PARALLEL_CORES}
         hostname: illixr-docker
-        user: ${UID_GID}
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix
         deploy:
