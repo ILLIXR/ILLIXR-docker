@@ -130,10 +130,10 @@ COPY ./ILLIXR/scripts/install_conda.sh ${install_tmp_dir}/scripts/install_conda.
 RUN ./scripts/install_conda.sh && \
     sudo ldconfig
 
+COPY ./ILLIXR/ ${illixr_dir}
+
 RUN sudo rm -rf ${install_tmp_dir} && \
     sudo chown -R illixr ${illixr_dir}
-
-COPY ./ILLIXR/ ${illixr_dir}
 
 WORKDIR ${illixr_dir}
 RUN ${src_dir_conda}/bin/conda env create --force -f ${env_config_path} && \
