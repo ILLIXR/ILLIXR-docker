@@ -28,4 +28,8 @@ It's better to make sure the container can access the host's X server before we 
 3. Run ILLIXR with the desired configuration: `./runner.sh configs/CONFIGURATION_NAME`
 
 ## Building the Image
-To build the image from scratch and bring up the container, run `sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build`
+To build the image from scratch and bring up the container, run
+```
+git submodule update --init
+sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build
+```
