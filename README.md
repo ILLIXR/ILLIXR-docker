@@ -19,8 +19,8 @@ After setting up some prerequisites, launching ILLIXR-docker is as simple as lau
 ## Is my setup working?
 It's better to make sure the container can access the host's X server before we start downloading the assets and compile ILLIXR:
 1. Run `sudo docker exec -it illixr-docker /bin/bash` 
-2. Run `glmark2` to check that OpenGL dispatch through glvnd is working
-3. Run `vulkaninfo` to check vulkan loader is working
+2. Run `glmark2` to check that the OpenGL dispatch through glvnd is working
+3. Run `vulkaninfo` to check whether vulkan loader is working
 
 ## Usage
 1. To access bash in your container, run `sudo docker exec -it illixr-docker /bin/bash`
