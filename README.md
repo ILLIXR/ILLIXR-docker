@@ -2,7 +2,7 @@
 
 ILLIXR-docker is a GPU-enabled Docker container that provides a development-ready environment for ILLIXR, supporting GUI passthrough on both Xorg and Wayland. Independent of a Linux distribution, ILLIXR-docker is a streamlined method to try out and develop for ILLIXR.
 
-## Specifications
+## Features
 - Preloaded with CUDA 11.4 Development Kit
 - All GPUs are accessable in the container. ILLIXR is tested to launch on both AMD and Nvidia GPUs with or without OpenXR. **However, an Nvidia GPU is required to launch ILLIXR-docker as of right now**
 - The default username and password are both `illixr`
