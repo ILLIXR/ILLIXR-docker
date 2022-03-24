@@ -14,7 +14,7 @@ After setting up some prerequisites, launching ILLIXR-docker is as simple as lau
 2. Install [Docker Compose](https://docs.docker.com/compose/install/)
 3. Expose your xhost to Docker. An insecure but easy way is to `xhost +local:root`. To properly configure xhost, please read the documentation [here](http://wiki.ros.org/docker/Tutorials/GUI)
 4. Clone this repository
-5. Run `sudo UID_GID="$(id -u):$(id -g)" docker-compose up -d` to bring up the container
+5. Run `sudo docker-compose up -d` to bring up the container
 
 ## Is my setup working?
 It's better to make sure the container can access the host's X server before we start downloading the assets and compile ILLIXR:
