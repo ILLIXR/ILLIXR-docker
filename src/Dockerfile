@@ -26,6 +26,8 @@ RUN apt-get update && \
         vulkan-tools \
         # Building tools
         build-essential \
+        #pyh we need at least a text editor
+        vim \
         apt-utils \
         ca-certificates \
         libssl-dev \
