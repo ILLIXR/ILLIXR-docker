@@ -12,7 +12,7 @@ ILLIXR-docker is a GPU-enabled Docker container that provides a development-read
 1. Docker
 2. Install [Docker Compose](https://docs.docker.com/compose/install/)
 3. Install `nvidia-docker2`. An installation guide by Nvidia is available [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) for mainstream distributions.
-4. Expose your xhost to Docker. An insecure but easy way is to `xhost -local:root`(you will see > *non-network local connections being added to access control list*> in terminal). To properly configure xhost, please consult the documentation [here](http://wiki.ros.org/docker/Tutorials/GUI) 
+4. Expose your xhost to Docker. An insecure but easy way is to `xhost -local:root`(you will see >non-network local connections being added to access control list in terminal). To properly configure xhost, please consult the documentation [here](http://wiki.ros.org/docker/Tutorials/GUI) 
 
 ## Creating the Container
 After setting up prerequisites, setting up the ILLIXR-docker is as simple as launching any docker image.
