@@ -27,10 +27,13 @@ git submodule update --init
 sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build
 ```
 
-## Launching ILLIXR
+## Launching Prebuilt ILLIXR
 1. To access bash in your container, run `sudo docker exec -it illixr-docker /bin/bash`
 2. Activate the `illixr-runner` conda environment by running `conda activate illixr-runner`
 3. Run ILLIXR with the desired configuration: `./runner.sh configs/CONFIGURATION_NAME`
+
+## Launching a Custom Version of ILLIXR
+To mount your working copy of ILLIXR, add a bind mount using the `-v` option.
 
 ## Is my setup working?
 1. Run `glmark2` to check that the OpenGL dispatch through glvnd is working
