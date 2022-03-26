@@ -17,7 +17,6 @@ ILLIXR-docker is a GPU-enabled Docker container that provides a development-read
 ### One-Line Command
 ``` docker run -d --privileged --name illixr-docker -e "DISPLAY=${DISPLAY}" --hostname illixr-docker -v /tmp/.X11-unix:/tmp/.X11-unix --gpus all illixr/illixr:nvidia-latest ```
 ### Using Docker Compose
-After setting up some prerequisites, launching ILLIXR-docker is as simple as launching any docker image.
 1. Install [Docker Compose](https://docs.docker.com/compose/install/)
 2. Clone this repository
 3. Run `sudo docker-compose up -d` to bring up the container
