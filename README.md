@@ -16,11 +16,17 @@ ILLIXR-docker is a GPU-enabled Docker container that provides a development-read
 ## Creating the Container
 ### One-Line Command
 ``` docker run -d --privileged --name illixr-docker -e "DISPLAY=${DISPLAY}" --hostname illixr-docker -v /tmp/.X11-unix:/tmp/.X11-unix --gpus all illixr/illixr:nvidia-latest ```
-### Docker Compose
+### Using Docker Compose
 After setting up some prerequisites, launching ILLIXR-docker is as simple as launching any docker image.
 1. Install [Docker Compose](https://docs.docker.com/compose/install/)
 2. Clone this repository
 3. Run `sudo docker-compose up -d` to bring up the container
+### Building the Image
+To build the image from scratch and bring up the container, run
+```
+git submodule update --init
+sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build
+```
 
 ## Launching ILLIXR
 1. To access bash in your container, run `sudo docker exec -it illixr-docker /bin/bash`
@@ -30,10 +36,3 @@ After setting up some prerequisites, launching ILLIXR-docker is as simple as lau
 ## Is my setup working?
 1. Run `glmark2` to check that the OpenGL dispatch through glvnd is working
 2. Run `vulkaninfo` to check whether vulkan loader is working
-
-## Building the Image
-To build the image from scratch and bring up the container, run
-```
-git submodule update --init
-sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build
-```
