@@ -38,7 +38,8 @@ RUN apt-get update && \
         rsync \
         clang-10 \
         gdb \
-	    glmark2 && \
+	vim \
+	glmark2 && \
     # Fix clang linking
     ln -s $(which ${CC}) ${prefix_dir}/bin/clang && \
     ln -s $(which ${CXX}) ${prefix_dir}/bin/clang++ && \
