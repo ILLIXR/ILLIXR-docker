@@ -21,12 +21,6 @@ ILLIXR-docker is a GPU-enabled Docker container that provides a development-read
 1. Install [Docker Compose](https://docs.docker.com/compose/install/)
 2. Clone this repository
 3. Run `sudo docker-compose up -d` to bring up the container
-### Building the Image
-To build the image from scratch and bring up the container, run
-```
-git submodule update --init
-sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build
-```
 
 ## Accessing the Container
 To access bash in your container, run `sudo docker exec -it illixr-docker /bin/bash`
@@ -40,3 +34,10 @@ Run ILLIXR with the desired configuration: `./runner.sh configs/CONFIGURATION_NA
 
 ## Launching a Custom Version of ILLIXR
 To mount your working copy of ILLIXR, add a bind mount using the `-v` option.
+
+## Building Your Own Image
+To build the image from scratch and bring up the container, run
+```
+git submodule update --init
+sudo PARALLEL_CORES=$(($(nproc)+1)) docker-compose up -d --build
+```
