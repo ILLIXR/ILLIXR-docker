@@ -33,7 +33,7 @@ To access bash in your container, run `sudo docker exec -it illixr-docker /bin/b
 Run ILLIXR with the desired configuration: `./runner.sh configs/CONFIGURATION_NAME`
 
 ## Launching a Custom Version of ILLIXR
-To mount your working copy of ILLIXR, add a bind mount using the `-v` option.
+To mount your working copy of ILLIXR, add a bind mount using the `-v` option of docker. For example, to mount ILLIXR (in the current directory) to /ILLIXR in docker, use `-v ./ILLIXR:/ILLIXR`
 
 ## Building Your Own Image
 To build the image from scratch and bring up the container, run
