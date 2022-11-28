@@ -13,6 +13,7 @@ ARG illixr_nproc
 ARG USER
 ARG PASSWORD
 ARG illixr_dir=/opt/ILLIXR
+ARG illixr_src=./ILLIXR
 ARG install_tmp_dir=/opt/ILLIXR_install
 
 ARG CC=clang-10
@@ -36,22 +37,22 @@ RUN chmod +x /usr/local/bin/create_user.sh && \
 WORKDIR ${install_tmp_dir}
 
 # Copy variables
-COPY ./ILLIXR/deps.sh ${install_tmp_dir}/deps.sh
-COPY ./ILLIXR/scripts/default_values.sh ${install_tmp_dir}/scripts/default_values.sh
-COPY ./ILLIXR/scripts/system_utils.sh ${install_tmp_dir}/scripts/system_utils.sh
+COPY ${illixr_src}/deps.sh ${install_tmp_dir}/deps.sh
+COPY ${illixr_src}/scripts/default_values.sh ${install_tmp_dir}/scripts/default_values.sh
+COPY ${illixr_src}/scripts/system_utils.sh ${install_tmp_dir}/scripts/system_utils.sh
 
 # Copy ILLXIR package scripts
-COPY ./ILLIXR/scripts/install_apt_deps.sh ${install_tmp_dir}/scripts/install_apt_deps.sh
-COPY ./ILLIXR/scripts/install_opencv.sh ${install_tmp_dir}/scripts/install_opencv.sh
-COPY ./ILLIXR/scripts/install_vulkan_headers.sh ${install_tmp_dir}/scripts/install_vulkan_headers.sh
-COPY ./ILLIXR/scripts/install_gtest.sh ${install_tmp_dir}/scripts/install_gtest.sh
-COPY ./ILLIXR/scripts/install_openxr.sh ${install_tmp_dir}/scripts/install_openxr.sh
-COPY ./ILLIXR/scripts/install_opengv.sh ${install_tmp_dir}/scripts/install_opengv.sh
-COPY ./ILLIXR/scripts/install_gtsam.sh ${install_tmp_dir}/scripts/install_gtsam.sh
-COPY ./ILLIXR/scripts/install_dbow2.sh ${install_tmp_dir}/scripts/install_dbow2.sh
-COPY ./ILLIXR/scripts/install_kimera_rpgo.sh ${install_tmp_dir}/scripts/install_kimera_rpgo.sh
-COPY ./ILLIXR/scripts/install_conda.sh ${install_tmp_dir}/scripts/install_conda.sh
-COPY ./ILLIXR/ ${illixr_dir}
+COPY ${illixr_src}/scripts/install_apt_deps.sh ${install_tmp_dir}/scripts/install_apt_deps.sh
+COPY ${illixr_src}scripts/install_opencv.sh ${install_tmp_dir}/scripts/install_opencv.sh
+COPY ${illixr_src}/scripts/install_vulkan_headers.sh ${install_tmp_dir}/scripts/install_vulkan_headers.sh
+COPY ${illixr_src}/scripts/install_gtest.sh ${install_tmp_dir}/scripts/install_gtest.sh
+COPY ${illixr_src}/scripts/install_openxr.sh ${install_tmp_dir}/scripts/install_openxr.sh
+COPY ${illixr_src}/scripts/install_opengv.sh ${install_tmp_dir}/scripts/install_opengv.sh
+COPY ${illixr_src}/scripts/install_gtsam.sh ${install_tmp_dir}/scripts/install_gtsam.sh
+COPY ${illixr_src}/scripts/install_dbow2.sh ${install_tmp_dir}/scripts/install_dbow2.sh
+COPY ${illixr_src}/scripts/install_kimera_rpgo.sh ${install_tmp_dir}/scripts/install_kimera_rpgo.sh
+COPY ${illixr_src}/scripts/install_conda.sh ${install_tmp_dir}/scripts/install_conda.sh
+COPY ${illixr_src} ${illixr_dir}
 
 # Install packages
 RUN apt-get update && \
