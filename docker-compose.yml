@@ -14,6 +14,7 @@ services:
                 USER: illixr
                 PASSWORD: illixr
                 illixr_nproc: ${PARALLEL_CORES}
+                illixr_src: ${ILLIXR_SRC:-./ILLIXR}
         hostname: illixr-docker
         volumes:
             - /tmp/.X11-unix:/tmp/.X11-unix
