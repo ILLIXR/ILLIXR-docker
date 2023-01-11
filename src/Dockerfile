@@ -51,7 +51,6 @@ COPY ./ILLIXR/scripts/install_gtsam.sh ${install_tmp_dir}/scripts/install_gtsam.
 COPY ./ILLIXR/scripts/install_dbow2.sh ${install_tmp_dir}/scripts/install_dbow2.sh
 COPY ./ILLIXR/scripts/install_kimera_rpgo.sh ${install_tmp_dir}/scripts/install_kimera_rpgo.sh
 COPY ./ILLIXR/scripts/install_conda.sh ${install_tmp_dir}/scripts/install_conda.sh
-COPY ./ILLIXR/ ${illixr_dir}
 
 # Install packages
 RUN apt-get update && \
@@ -124,6 +123,9 @@ RUN ./scripts/install_opencv.sh && \
     sudo ldconfig && \
     sudo rm -rf ${install_tmp_dir} && \
     sudo chown -R illixr ${illixr_dir}
+
+# ILLIXR source should be copied last to maximize cache utilization
+COPY ./ILLIXR/ ${illixr_dir}
 
 USER ${USER}
 
