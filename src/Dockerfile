@@ -82,28 +82,29 @@ RUN apt-get update && \
         rsync \
         clang-10 \
         gdb \
-	    vim \
-	    glmark2 \
+	vim \
+	glmark2 \
         tzdata && \
 
-    # Insall ILLIXR dependencies
-    ./scripts/install_apt_deps.sh && \
+    # Install cmake from Kitware repo
+    wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | sudo tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null && \
+    echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ jammy main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null && \
+    apt-get update && \
+    apt-get install -qq -y --no-install-recommends cmake
+
+# Insall ILLIXR dependencies
+RUN ./scripts/install_apt_deps.sh && \
 
     # Fix clang linking
     ln -s $(which ${CC}) ${prefix_dir}/bin/clang && \
     ln -s $(which ${CXX}) ${prefix_dir}/bin/clang++ && \
-
-    # Install latest CMake from source
-    git clone --depth 1 https://github.com/Kitware/CMake /tmp/cmake && \
-    cd /tmp/cmake && \
-    ./bootstrap && \
-    make -j${illixr_nproc} install && \
 
     # Clean up
     ldconfig && \
     apt-get clean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/* /tmp/* && \
+    
     # Configure locale
     sed -i "s/# en_US.UTF-8/en_US.UTF-8/" /etc/locale.gen \
     && locale-gen
