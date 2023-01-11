@@ -28,9 +28,7 @@ RUN chmod +x /usr/local/bin/create_user.sh && \
     rm /usr/local/bin/create_user.sh && \
     # Create directories for ILLIXR
     mkdir ${illixr_dir} && \
-    chown illixr ${illixr_dir} && \
-    mkdir ${install_tmp_dir} && \
-    chown illixr ${install_tmp_dir}
+    mkdir ${install_tmp_dir}
 
 # Set workdir to installation root
 WORKDIR ${install_tmp_dir}
@@ -126,6 +124,10 @@ RUN ./scripts/install_opencv.sh && \
 
 # ILLIXR source should be copied last to maximize cache utilization
 COPY ./ILLIXR/ ${illixr_dir}
+
+# Correct permissions for user switch
+RUN chown illixr ${illixr_dir} && \
+    chown illixr ${install_tmp_dir}
 
 USER ${USER}
 
