@@ -33,23 +33,6 @@ RUN chmod +x /usr/local/bin/create_user.sh && \
 # Set workdir to installation root
 WORKDIR ${install_tmp_dir}
 
-# Copy variables
-COPY ./ILLIXR/deps.sh ${install_tmp_dir}/deps.sh
-COPY ./ILLIXR/scripts/default_values.sh ${install_tmp_dir}/scripts/default_values.sh
-COPY ./ILLIXR/scripts/system_utils.sh ${install_tmp_dir}/scripts/system_utils.sh
-
-# Copy ILLXIR package scripts
-COPY ./ILLIXR/scripts/install_apt_deps.sh ${install_tmp_dir}/scripts/install_apt_deps.sh
-COPY ./ILLIXR/scripts/install_opencv.sh ${install_tmp_dir}/scripts/install_opencv.sh
-COPY ./ILLIXR/scripts/install_vulkan_headers.sh ${install_tmp_dir}/scripts/install_vulkan_headers.sh
-COPY ./ILLIXR/scripts/install_gtest.sh ${install_tmp_dir}/scripts/install_gtest.sh
-COPY ./ILLIXR/scripts/install_openxr.sh ${install_tmp_dir}/scripts/install_openxr.sh
-COPY ./ILLIXR/scripts/install_opengv.sh ${install_tmp_dir}/scripts/install_opengv.sh
-COPY ./ILLIXR/scripts/install_gtsam.sh ${install_tmp_dir}/scripts/install_gtsam.sh
-COPY ./ILLIXR/scripts/install_dbow2.sh ${install_tmp_dir}/scripts/install_dbow2.sh
-COPY ./ILLIXR/scripts/install_kimera_rpgo.sh ${install_tmp_dir}/scripts/install_kimera_rpgo.sh
-COPY ./ILLIXR/scripts/install_conda.sh ${install_tmp_dir}/scripts/install_conda.sh
-
 # Install packages
 RUN apt-get update && \
     apt-get install -qq -y --no-install-recommends \
@@ -88,6 +71,23 @@ RUN apt-get update && \
     echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ focal main' | sudo tee /etc/apt/sources.list.d/kitware.list >/dev/null && \
     apt-get update && \
     apt-get install -qq -y --no-install-recommends cmake
+
+# Copy variables
+COPY ./ILLIXR/deps.sh ${install_tmp_dir}/deps.sh
+COPY ./ILLIXR/scripts/default_values.sh ${install_tmp_dir}/scripts/default_values.sh
+COPY ./ILLIXR/scripts/system_utils.sh ${install_tmp_dir}/scripts/system_utils.sh
+
+# Copy ILLXIR package scripts
+COPY ./ILLIXR/scripts/install_apt_deps.sh ${install_tmp_dir}/scripts/install_apt_deps.sh
+COPY ./ILLIXR/scripts/install_opencv.sh ${install_tmp_dir}/scripts/install_opencv.sh
+COPY ./ILLIXR/scripts/install_vulkan_headers.sh ${install_tmp_dir}/scripts/install_vulkan_headers.sh
+COPY ./ILLIXR/scripts/install_gtest.sh ${install_tmp_dir}/scripts/install_gtest.sh
+COPY ./ILLIXR/scripts/install_openxr.sh ${install_tmp_dir}/scripts/install_openxr.sh
+COPY ./ILLIXR/scripts/install_opengv.sh ${install_tmp_dir}/scripts/install_opengv.sh
+COPY ./ILLIXR/scripts/install_gtsam.sh ${install_tmp_dir}/scripts/install_gtsam.sh
+COPY ./ILLIXR/scripts/install_dbow2.sh ${install_tmp_dir}/scripts/install_dbow2.sh
+COPY ./ILLIXR/scripts/install_kimera_rpgo.sh ${install_tmp_dir}/scripts/install_kimera_rpgo.sh
+COPY ./ILLIXR/scripts/install_conda.sh ${install_tmp_dir}/scripts/install_conda.sh
 
 # Insall ILLIXR dependencies
 RUN ./scripts/install_apt_deps.sh && \
