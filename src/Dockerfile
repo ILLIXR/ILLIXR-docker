@@ -126,8 +126,8 @@ RUN ./scripts/install_opencv.sh && \
 COPY ./ILLIXR/ ${illixr_dir}
 
 # Correct permissions for user switch
-RUN chown illixr ${illixr_dir} && \
-    chown illixr ${install_tmp_dir}
+RUN chown -R illixr ${illixr_dir} && \
+    chown -R illixr ${install_tmp_dir}
 
 USER ${USER}
 
