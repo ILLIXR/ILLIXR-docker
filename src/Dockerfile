@@ -34,7 +34,8 @@ RUN chmod +x /usr/local/bin/create_user.sh && \
 WORKDIR ${install_tmp_dir}
 
 # Install packages
-RUN apt-get update && \
+RUN apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/3bf863cc.pub && \
+    apt-get update && \
     apt-get install -qq -y --no-install-recommends \
         # Dependencies: glvnd, x11, and OpenGL (dev)
         libx11-6 \
