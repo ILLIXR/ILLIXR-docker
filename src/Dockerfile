@@ -1,4 +1,4 @@
-FROM hub.ncsa.illinois.edu/friedel/nvidia/cudagl:12.2.0-devel-ubuntu22.04
+FROM nvidia/cudagl:11.4.2-devel-ubuntu20.04
 
 # Run time env variables
 # env vars for the NVIDIA driver
