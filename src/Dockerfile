@@ -24,9 +24,20 @@ RUN chmod +x /usr/local/bin/create_user.sh && \
     /usr/local/bin/create_user.sh && \
     rm /usr/local/bin/create_user.sh
 
+RUN apt-get update
+RUN apt-get -y install curl apt-transport-https lsb-core
+
+RUN apt-get -y install wget software-properties-common
+
+RUN apt-get update
+RUN add-apt-repository ppa:monado-xr/monado -y -u
+RUN wget -nv https://monado.freedesktop.org/keys/monado-ci.asc -O /etc/apt/trusted.gpg.d/monado-ci.asc
+RUN echo 'deb https://monado.pages.freedesktop.org/monado/apt focal main' | tee /etc/apt/sources.list.d/monado-ci.list
+RUN apt update
+
 # Install packages
 RUN apt-get update && \
-    apt-get install -y install \
+    apt-get -y install \
     curl \
     apt-transport-https \
     lsb-core \
@@ -83,12 +94,10 @@ RUN apt-get update && \
 # Install Nvidia config for Vulkan loader
 COPY nvidia_icd.json /etc/vulkan/icd.d/nvidia_icd.json
 
-RUN sudo chown -R illixr ${illixr_dir}
-
 # ILLIXR source should be copied last to maximize cache utilization
 COPY ./ILLIXR/ ${illixr_dir}
-COPY --chown=illixr cmk.sh ${illixr_dir}/bin
-RUN chmod +x ${illixr_dir}/bin/cmk.sh
+COPY --chown=illixr cmk.sh ${illixr_dir}
+RUN chmod +x ${illixr_dir}/cmk.sh
 USER ${USER}
 
 CMD tail -f /dev/null
