@@ -1,4 +1,4 @@
 [submodule "src/ILLIXR"]
 	path = src/ILLIXR
 	url = https://github.com/ILLIXR/ILLIXR
-	branch = master
+	branch = convertBuildToCmake

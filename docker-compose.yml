@@ -2,7 +2,7 @@ version: '3'
  
 services:
     illixr:
-        image: illixr/illixr:nvidia-latest
+        image: hub.ncsa.illinois.edu/friedel/nvidia/cudagl:12.2.0-devel-ubuntu22.04
         privileged: true
         container_name: ${CONTAINER_NAME:-illixr-docker}
         environment:
@@ -20,5 +20,6 @@ services:
         deploy:
             resources:
                 reservations:
+                    devices:
                     devices:
                       - capabilities: [gpu]
